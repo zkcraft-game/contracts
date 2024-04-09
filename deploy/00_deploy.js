@@ -49,16 +49,18 @@ module.exports = async ({ deployments }) => {
         log: true,
     });
 
-        //deploy ERC6551Registry
-        const erc6551Registry = await deploy("ERC6551Registry", {
-            from: wallet.address,
-            args: [],
-            log: true,
-        });
+    //deploy ERC6551Registry
+     const erc6551Registry = await deploy("ERC6551Registry", {
+        from: wallet.address,
+        args: [],
+        log: true,
+     });
 
-       //deploy ERC6551Account
-         const erc6551Account = await deploy("ERC6551Account", {
-            args: [],
-            log: true,
-        });
+    //deploy ERC6551Account
+     const erc6551Account = await deploy("ERC6551Account", {
+        from: wallet.address,
+        args: [],
+        log: true,
+     });
+     
 }
