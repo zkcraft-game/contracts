@@ -1,3 +1,7 @@
+task(
+    "create-account",
+    "Create account and mint."
+  )
 const hre = require("hardhat");
 const { ethers } = require("ethers")
 require("dotenv").config()

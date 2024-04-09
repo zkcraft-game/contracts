@@ -62,4 +62,21 @@ module.exports = async ({ deployments }) => {
             log: true,
         });
 
+      //deploy IERC6551Account
+         const ierc6551Account = await deploy("IERC6551Account", {
+            args: [],
+            log: true,
+        });
+
+       //deploy IERC6551Executable
+       const ierc6551Executable = await deploy("IERC6551Executable", {
+        args: [],
+        log: true,
+        });
+
+       //deploy IERC6551Registry
+       const ierc6551Registry = await deploy("IERC6551Registry", {
+        args: [],
+        log: true, 
+        });
 }
