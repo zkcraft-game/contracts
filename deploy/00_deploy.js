@@ -62,5 +62,12 @@ module.exports = async ({ deployments }) => {
         args: [],
         log: true,
      });
+
+    //deploy ERC6551AccountProxy
+    const erc6551AccountProxy = await deploy("ERC6551AccountProxy", {
+        from: wallet.address,
+        args: [],
+        log: true,
+     });
      
 }
