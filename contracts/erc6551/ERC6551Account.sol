@@ -5,20 +5,41 @@ import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/interfaces/IERC1271.sol";
 import "@openzeppelin/contracts/utils/cryptography/SignatureChecker.sol";
-import "../../interfaces/IERC6551Account.sol";
-import "../../interfaces/IERC6551Executable.sol";
+
+interface IERC6551Account {
+    receive() external payable;
+
+    function token()
+        external
+        view
+        returns (uint256 chainId, address tokenContract, uint256 tokenId);
+
+    function state() external view returns (uint256);
+
+    function isValidSigner(address signer, bytes calldata context)
+        external
+        view
+        returns (bytes4 magicValue);
+}
+
+interface IERC6551Executable {
+    function execute(address to, uint256 value, bytes calldata data, uint8 operation)
+        external
+        payable
+        returns (bytes memory);
+}
 
 contract ERC6551Account is IERC165, IERC1271, IERC6551Account, IERC6551Executable {
     uint256 public state;
 
     receive() external payable {}
 
-    function execute(
-        address to,
-        uint256 value,
-        bytes calldata data,
-        uint256 operation
-    ) external payable returns (bytes memory result) {
+    function execute(address to, uint256 value, bytes calldata data, uint8 operation)
+        external
+        payable
+        virtual
+        returns (bytes memory result)
+    {
         require(_isValidSigner(msg.sender), "Invalid signer");
         require(operation == 0, "Only call operations are supported");
 
@@ -34,7 +55,7 @@ contract ERC6551Account is IERC165, IERC1271, IERC6551Account, IERC6551Executabl
         }
     }
 
-    function isValidSigner(address signer, bytes calldata) external view returns (bytes4) {
+    function isValidSigner(address signer, bytes calldata) external view virtual returns (bytes4) {
         if (_isValidSigner(signer)) {
             return IERC6551Account.isValidSigner.selector;
         }
@@ -45,6 +66,7 @@ contract ERC6551Account is IERC165, IERC1271, IERC6551Account, IERC6551Executabl
     function isValidSignature(bytes32 hash, bytes memory signature)
         external
         view
+        virtual
         returns (bytes4 magicValue)
     {
         bool isValid = SignatureChecker.isValidSignatureNow(owner(), hash, signature);
@@ -53,24 +75,16 @@ contract ERC6551Account is IERC165, IERC1271, IERC6551Account, IERC6551Executabl
             return IERC1271.isValidSignature.selector;
         }
 
-        return "";
+        return bytes4(0);
     }
 
-    function supportsInterface(bytes4 interfaceId) external pure returns (bool) {
-        return (interfaceId == type(IERC165).interfaceId ||
-            interfaceId == type(IERC6551Account).interfaceId ||
-            interfaceId == type(IERC6551Executable).interfaceId);
+    function supportsInterface(bytes4 interfaceId) public view virtual returns (bool) {
+        return interfaceId == type(IERC165).interfaceId
+            || interfaceId == type(IERC6551Account).interfaceId
+            || interfaceId == type(IERC6551Executable).interfaceId;
     }
 
-    function token()
-        public
-        view
-        returns (
-            uint256,
-            address,
-            uint256
-        )
-    {
+    function token() public view virtual returns (uint256, address, uint256) {
         bytes memory footer = new bytes(0x60);
 
         assembly {
@@ -80,14 +94,14 @@ contract ERC6551Account is IERC165, IERC1271, IERC6551Account, IERC6551Executabl
         return abi.decode(footer, (uint256, address, uint256));
     }
 
-    function owner() public view returns (address) {
+    function owner() public view virtual returns (address) {
         (uint256 chainId, address tokenContract, uint256 tokenId) = token();
         if (chainId != block.chainid) return address(0);
 
         return IERC721(tokenContract).ownerOf(tokenId);
     }
 
-    function _isValidSigner(address signer) internal view returns (bool) {
+    function _isValidSigner(address signer) internal view virtual returns (bool) {
         return signer == owner();
     }
 }
