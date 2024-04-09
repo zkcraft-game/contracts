@@ -56,4 +56,10 @@ module.exports = async ({ deployments }) => {
             log: true,
         });
 
+       //deploy ERC6551Account
+         const erc6551Account = await deploy("ERC6551Account", {
+            args: [],
+            log: true,
+        });
+
 }
