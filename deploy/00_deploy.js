@@ -41,4 +41,19 @@ module.exports = async ({ deployments }) => {
         args: [],
         log: true,
     });
+
+    //deploy ZombokContract
+    const zombok = await deploy("Zombok", {
+        from: wallet.address,
+        args: [],
+        log: true,
+    });
+
+        //deploy ERC6551Registry
+        const erc6551Registry = await deploy("ERC6551Registry", {
+            from: wallet.address,
+            args: [],
+            log: true,
+        });
+
 }
