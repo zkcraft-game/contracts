@@ -13,6 +13,10 @@ const networkConfig = {
         name: "filecoinmainnet",
         tokensToBeMinted: 12000,
     },
+    421614: {
+        name: "arbitrumsepolia",
+        tokensToBeMinted: 12000,
+    },
 }
 
 // const developmentChains = ["hardhat", "localhost"]

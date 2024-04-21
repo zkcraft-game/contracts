@@ -35,11 +35,11 @@ module.exports = {
             accounts: [PRIVATE_KEY],
         },
 
-       arbitrumsepolia: {
-          chainId: 421614,
-          url: "https://arb-sepolia.g.alchemy.com/v2/AI119gwS5uko7ILBGXmiy-7tUnh36E-L",
-          accounts: [PRIVATE_KEY],
-        },
+        arbitrumsepolia: {
+            chainId: 421614,
+			accounts: [PRIVATE_KEY],
+			url: `https://eth-sepolia.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`
+		},
     },
         
     paths: {
