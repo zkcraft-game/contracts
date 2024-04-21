@@ -17,7 +17,7 @@ module.exports = {
           },
         },
       },
-    defaultNetwork: "calibrationnet",
+    defaultNetwork: "arbitrumsepolia",
     networks: {
         localnet: {
             chainId: 31415926,
@@ -34,7 +34,14 @@ module.exports = {
             url: "https://api.node.glif.io",
             accounts: [PRIVATE_KEY],
         },
+
+       arbitrumsepolia: {
+          chainId: 421614,
+          url: "https://arb-sepolia.g.alchemy.com/v2/AI119gwS5uko7ILBGXmiy-7tUnh36E-L",
+          accounts: [PRIVATE_KEY],
+        },
     },
+        
     paths: {
         sources: "./contracts",
         tests: "./test",
