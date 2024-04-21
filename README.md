@@ -10,19 +10,19 @@ ERC6551 Account Contract
 
 0x027EaEa51DD9de494D9A82f3C8a7cB54967dA4D6
 
-Zombok NFT Contract
+zkCraft NFT Contract
 
 0xB5f051231832B15002838BB7e11db437771E5e61
 
 
 ```
-git clone --recurse-submodules https://github.com/zombok/fevm-contracts
-cd fevm-contracts
+git clone --recurse-submodules https://github.com/zkcraft-game/contracts
+cd contracts
 yarn install
 ```
 
 
-This will clone the FEVM Contracts onto your computer, switch directories into the newly installed FEVM Contracts, and install the dependencies the contracts needs to work.
+This will clone the FVM Contracts onto your computer, switch directories into the newly installed FVM Contracts, and install the dependencies the contracts needs to work.
 
 
 ## Get a Private Key
