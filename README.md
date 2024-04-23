@@ -1,4 +1,9 @@
-# Arbitrum Sepolia
+# Arbitrum Sepolia Contract
+
+zkCraft NFT Contract
+0x5FE1965687d6eB53C74bB143Fd8f11c34F73f0Cf
+
+# Neon VM Devnet Contract
 
 zkCraft NFT Contract
 0x5FE1965687d6eB53C74bB143Fd8f11c34F73f0Cf
