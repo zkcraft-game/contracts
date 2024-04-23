@@ -10,8 +10,6 @@ zkCraft NFT Contract
 
 # FEVM Calibration Network
 
-## Cloning the Repo
-
 ERC6551 Registry Contract
 
 0xFCb286eE16977AaccF090139e374fcbEC1F9990b
@@ -24,6 +22,7 @@ zkCraft NFT Contract
 
 0xB5f051231832B15002838BB7e11db437771E5e61
 
+## Cloning the Repo
 
 ```
 git clone --recurse-submodules https://github.com/zkcraft-game/contracts
