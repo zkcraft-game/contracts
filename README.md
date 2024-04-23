@@ -6,7 +6,7 @@ zkCraft NFT Contract
 # Neon VM Devnet Contract
 
 zkCraft NFT Contract
-0x5FE1965687d6eB53C74bB143Fd8f11c34F73f0Cf
+0xaF4D5B004aC06ec2a99764bfBeb318efcF9ccF5F
 
 # FEVM Calibration Network
 
