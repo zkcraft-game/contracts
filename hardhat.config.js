@@ -37,8 +37,8 @@ module.exports = {
 
         arbitrumsepolia: {
             chainId: 421614,
-			accounts: [PRIVATE_KEY],
-			url: `https://eth-sepolia.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`
+			      accounts: [PRIVATE_KEY],
+			      url: `https://eth-sepolia.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`
 		},
     },
         
